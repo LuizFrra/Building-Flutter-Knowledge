@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nutritionapp/widgets/food_item_details.dart';
 
 class FoodItem extends StatelessWidget {
-
   final imgPath;
   final foodName;
   final price;
@@ -63,7 +62,9 @@ class FoodItem extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.add),
               color: Colors.black,
-              onPressed: () {},
+              onPressed: () {
+                print('Clicked Add Food Item.');
+              },
             )
           ],
         ),

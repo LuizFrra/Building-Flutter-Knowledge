@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0XFF21BFBD),
+        backgroundColor: Color(0XFF03C3C0),
         body: Column(
           children: <Widget>[
             FoodMenu()

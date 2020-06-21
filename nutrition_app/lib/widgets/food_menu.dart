@@ -12,7 +12,14 @@ class FoodMenu extends StatefulWidget {
 }
 
 class _FoodMenuState extends State<FoodMenu> {
-
+  List<FoodItem> itens = [
+    FoodItem('assets/images/plate1.png', 'Salmon Bow', '\$24.00'),
+    FoodItem('assets/images/plate2.png', 'Spring Bow', '\$24.00'),
+    FoodItem('assets/images/plate3.png', 'Avocado Bow', '\$24.00'),
+    FoodItem('assets/images/plate4.png', 'Berry Bow', '\$24.00'),
+    FoodItem('assets/images/plate5.png', 'Light Bow', '\$24.00'),
+    FoodItem('assets/images/plate6.png', 'Fit Bow', '\$24.00'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +40,12 @@ class _FoodMenuState extends State<FoodMenu> {
                 padding: EdgeInsets.only(top: 45.0),
                 child: Container(
                   height: MediaQuery.of(context).size.height - 285,
-                  child: ListView(
-                    children: <Widget>[
-                      FoodItem(
-                          'assets/images/plate1.png', 'Salmon Bow', '\$24.00'),
-                      FoodItem(
-                          'assets/images/plate2.png', 'Spring Bow', '\$24.00'),
-                      FoodItem(
-                          'assets/images/plate3.png', 'Avocado Bow', '\$24.00'),
-                      FoodItem(
-                          'assets/images/plate4.png', 'Berry Bow', '\$24.00'),
-                      FoodItem(
-                          'assets/images/plate5.png', 'Light Bow', '\$24.00'),
-                      FoodItem(
-                          'assets/images/plate6.png', 'Fit Bow', '\$24.00'),
-                    ],
+                  child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    itemCount: itens.length,
+                    itemBuilder: (context, index) {
+                      return itens[index];
+                    },
                   ),
                 ),
               ),
