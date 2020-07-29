@@ -4,6 +4,6 @@ import 'package:dogif/Models/Gif.dart';
 
 abstract class IGifService<T, S> extends IBaseService<Gif, String> {
 
-  Future<List<Gif>> fetchGifs(int offset, String randomId);
+  Future<List<Gif>> fetchGifs(int offset, String randomId, int limit);
 
 }

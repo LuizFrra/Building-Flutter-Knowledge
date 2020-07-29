@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:isolate';
 import 'package:dogif/Commons/BaseService/BaseService.dart';
 import 'package:dogif/Models/Gif.dart';
 import 'package:dogif/Repositories/GifRepository.dart';
@@ -25,13 +26,13 @@ class GifService extends BaseService<Gif, String> implements IGifService {
   }
 
   @override
-  Future<List<Gif>> fetchGifs(int offset, String randomId) async {
+  Future<List<Gif>> fetchGifs(int offset, String randomId, int limit) async {
     String url = "https://api.giphy.com/v1/gifs/search?q=dog";
 
     Map<String, dynamic> query = {
       'offset': offset,
       //'random_id': randomId,
-      'limit': 6,
+      'limit': limit,
       'api_key': _apiKey
     };
 
@@ -45,8 +46,7 @@ class GifService extends BaseService<Gif, String> implements IGifService {
       throw Exception('Failed to load Gifs');
 
     final responseDecoded = json.decode(response.body);
-
-    return responseDecoded['data'].map((item) => Gif.fromJson(item)).toList();
+    return List.castFrom<dynamic, Gif>(responseDecoded['data'].map((item) => Gif.fromJson(item)).toList());
   }
 
 }
