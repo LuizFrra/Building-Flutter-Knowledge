@@ -1,13 +1,9 @@
-import 'dart:isolate';
-import 'dart:math';
-
 import 'package:dogif/Models/Gif.dart';
 import 'package:dogif/Services/GifService.dart';
 import 'package:dogif/Services/IGifService.dart';
 import 'package:dogif/ViewModels/GifViewModel.dart';
 
 class ListGifViewModel {
-
   IGifService _gifService;
 
   int _offset;
@@ -23,46 +19,47 @@ class ListGifViewModel {
   bool _isFetching = false;
 
   factory ListGifViewModel() {
-    if(_listGifViewModel == null) {
+    if (_listGifViewModel == null) {
       print("Griando Instancia ListGifViewModel");
-      _listGifViewModel = new ListGifViewModel._internal("", 0, new GifService());
+      _listGifViewModel =
+          new ListGifViewModel._internal("", 0, new GifService());
     }
     return _listGifViewModel;
   }
 
-  ListGifViewModel._internal(this._randomId, this._offset, IGifService gifService) {
+  ListGifViewModel._internal(
+      this._randomId, this._offset, IGifService gifService) {
     this._gifService = gifService;
     this._fetchResult = new List<Gif>();
     this._realOffSet = 0;
   }
 
-
   Future<List<GifViewModel>> fetchGifs(int limit) async {
+    print("fetch gifs  - list");
     List<GifViewModel> gifs = new List<GifViewModel>();
-    while(limit != 0) {
-      if(this._fetchResult.length == 0 && !this._isFetching) {
+    while (limit != 0) {
+      if (this._fetchResult.length == 0 && !this._isFetching) {
         this._isFetching = true;
         this._offset += 10;
-        this._fetchResult.addAll(await this._gifService.fetchGifs(_offset - 10, _randomId, 10));
+        this._fetchResult.addAll(
+            await this._gifService.fetchGifs(_offset - 10, _randomId, 10));
         this._isFetching = false;
       }
-      while(this._isFetching == true) await Future.delayed(const Duration(milliseconds: 500));
-      Gif removedElement = this._fetchResult.isNotEmpty ? this._fetchResult.removeAt(0) : null;
-      if(removedElement != null) {
+      while (this._isFetching == true)
+        await Future.delayed(const Duration(milliseconds: 250));
+      Gif removedElement =
+          this._fetchResult.isNotEmpty ? this._fetchResult.removeAt(0) : null;
+      if (removedElement != null) {
         gifs.add(GifViewModel(removedElement));
         limit -= 1;
         this._realOffSet += 1;
       }
     }
+    print("fim fetch gifs - list");
     return gifs;
   }
 
-  bool addToFavorite(String id) {
+  bool addToFavorite(String id) {}
 
-  }
-
-  bool removeFromFavorite(String id) {
-
-  }
-
+  bool removeFromFavorite(String id) {}
 }

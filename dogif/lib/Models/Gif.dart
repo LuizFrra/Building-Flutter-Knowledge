@@ -1,29 +1,42 @@
 class Gif {
-
   String id;
-  String source;
-  int width;
-  int height;
+  String sourceMain;
+  int widthMain;
+  int heightMain;
+  String sourceDownsizedStill;
+  int widthDownsizedStill;
+  int heightDownsizedStill;
   bool isFavorite;
 
-  Gif({this.id, this.source, this.width, this.height, this.isFavorite});
+  Gif({
+    this.id,
+    this.sourceMain,
+    this.widthMain,
+    this.heightMain,
+    this.sourceDownsizedStill,
+    this.widthDownsizedStill,
+    this.heightDownsizedStill,
+    this.isFavorite,
+  });
 
   factory Gif.fromJson(Map<String, dynamic> json) {
-
-//    int width = int.tryParse(json['dados']['image_width']);
-//    if(width == null )
-//      width = 0;
-//
-//    int height = int.tryParse(json['dados']['image_height']);
-//    if(height == null )
-//      height = 0;
+    int widthMain = int.tryParse(json['images']['original']['width']);
+    int heightMain = int.tryParse(json['images']['original']['height']);
+    int widthDownsizedStill =
+        int.tryParse(json['images']['downsized_still']['width']);
+    int heightDownsizedStill =
+        int.tryParse(json['images']['downsized_still']['height']);
 
     return Gif(
-      id: json['id'],
-      source: json['source'],
-//      width: width,
-//      height: height,
-      isFavorite: false
-    );
+        id: json['id'],
+        sourceMain: json['images']['original']['url'],
+        widthMain: widthMain != null ? widthMain : 250,
+        heightMain: heightMain != null ? heightMain : 250,
+        sourceDownsizedStill: json['images']['downsized_still']['url'],
+        widthDownsizedStill:
+            widthDownsizedStill != null ? widthDownsizedStill : 250,
+        heightDownsizedStill:
+            heightDownsizedStill != null ? heightDownsizedStill : 250,
+        isFavorite: false);
   }
 }

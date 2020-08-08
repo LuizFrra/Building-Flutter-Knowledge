@@ -33,8 +33,8 @@ class _GifListPageState extends State<GifListPage> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          GifList(gifListcontroller: _left, fetchGifs: widget._listGifViewModel.fetchGifs, startIndex: 0,),
-          GifList(gifListcontroller: _right, fetchGifs: widget._listGifViewModel.fetchGifs, startIndex: 1,)
+          GifList(gifListcontroller: _left, fetchGifs: widget._listGifViewModel.fetchGifs),
+          GifList(gifListcontroller: _right, fetchGifs: widget._listGifViewModel.fetchGifs)
         ],
       ),
     );

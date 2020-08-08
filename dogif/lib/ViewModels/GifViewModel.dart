@@ -9,16 +9,28 @@ class GifViewModel {
       return this._gif.id;
   }
 
-  String get source {
-    return this._gif.source;
+  String get sourceMain {
+    return this._gif.sourceMain;
   }
 
-  int get height {
-    return this._gif.height;
+  String get sourceDownsizedStill {
+    return this._gif.sourceDownsizedStill;
   }
 
-  int get width {
-    return this._gif.width;
+  int get heightMain {
+    return this._gif.heightMain;
+  }
+
+  int get widthMain {
+    return this._gif.widthMain;
+  }
+
+  int get heightDownsizedStill {
+    return this._gif.heightDownsizedStill;
+  }
+
+  int get widthDownsizedStill {
+    return this._gif.widthDownsizedStill;
   }
 
   bool get isFavorite {
