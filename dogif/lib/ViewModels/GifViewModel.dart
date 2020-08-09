@@ -37,7 +37,7 @@ class GifViewModel {
     return this._gif.isFavorite;
   }
 
-  void set isFavorite(bool value) {
+  set isFavorite(bool value) {
     this._gif.isFavorite = value;
   }
 }

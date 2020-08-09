@@ -1,4 +1,3 @@
-import 'package:dogif/Commons/BaseRepository/IBaseRepository.dart';
 import 'package:dogif/Commons/BaseService/IBaseService.dart';
 import 'package:dogif/Models/Gif.dart';
 

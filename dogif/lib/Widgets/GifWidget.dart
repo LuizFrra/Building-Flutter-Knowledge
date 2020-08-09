@@ -5,9 +5,9 @@ import 'package:flutter/widgets.dart';
 
 class GifWidget extends StatefulWidget {
 
-  GifViewModel gif;
-  Key key;
-  Function onTap;
+  final GifViewModel gif;
+  final Key key;
+  final Function onTap;
 
   GifWidget({this.gif, this.key, this.onTap}) : super(key: key);
 

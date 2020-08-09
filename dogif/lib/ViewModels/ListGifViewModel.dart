@@ -57,7 +57,12 @@ class ListGifViewModel {
     return gifs;
   }
 
-  bool addToFavorite(String id) {}
+  bool addToFavorite(GifViewModel gif) {
+    print("Adicionando Ao favorito.");
+    return true;
+  }
 
-  bool removeFromFavorite(String id) {}
+  bool removeFromFavorite(GifViewModel gif) {
+    return true;
+  }
 }

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class teste extends StatelessWidget {
+class Teste extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
