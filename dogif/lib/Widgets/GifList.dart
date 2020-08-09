@@ -9,11 +9,13 @@ class GifList extends StatefulWidget {
   final appBarHeight;
   final gifListcontroller;
   final Function fetchGifs;
+  final Function onTap;
 
   GifList({
     this.appBarHeight = 50,
     @required this.gifListcontroller,
     @required this.fetchGifs,
+    this.onTap
   });
 
   @override
@@ -48,6 +50,7 @@ class _GifListState extends State<GifList> {
                 return KeepAliveDogif(
                   child: GifWidget(
                     gif: snapshot.data[0],
+                    onTap: widget.onTap,
                   ),
                 );
               }

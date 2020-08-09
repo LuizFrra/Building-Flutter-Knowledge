@@ -1,3 +1,5 @@
+import 'package:dogif/Pages/FullGifPage.dart';
+import 'package:dogif/ViewModels/GifViewModel.dart';
 import 'package:dogif/ViewModels/ListGifViewModel.dart';
 import 'package:dogif/Widgets/GifList.dart';
 import 'package:flutter/material.dart';
@@ -27,14 +29,21 @@ class _GifListPageState extends State<GifListPage> {
     _right = _controllers.addAndGet();
   }
 
+  VoidCallback openGif(GifViewModel gif) {
+    print(gif.id);
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => FullGifPage(gif)
+    ));
+  }
+
   @override
   Widget build(BuildContext context)  {
     return SingleChildScrollView(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          GifList(gifListcontroller: _left, fetchGifs: widget._listGifViewModel.fetchGifs),
-          GifList(gifListcontroller: _right, fetchGifs: widget._listGifViewModel.fetchGifs)
+          GifList(gifListcontroller: _left, fetchGifs: widget._listGifViewModel.fetchGifs, onTap: openGif,),
+          GifList(gifListcontroller: _right, fetchGifs: widget._listGifViewModel.fetchGifs, onTap: openGif,)
         ],
       ),
     );

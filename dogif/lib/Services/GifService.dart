@@ -7,7 +7,7 @@ import 'package:dogif/Services/IGifService.dart';
 import 'package:http/http.dart' as http;
 
 class GifService extends BaseService<Gif, String> implements IGifService {
-  String _apiKey = "YFeSB1zsjj8DK2fKmCVjo6cl2rbUMnzv";
+  String _apiKey = "zX8HwI4QKD2Z26nEx3qz3h8Ln6iuQHcE";
 
   static GifService _gifService;
 
@@ -24,26 +24,19 @@ class GifService extends BaseService<Gif, String> implements IGifService {
 
   @override
   Future<List<Gif>> fetchGifs(int offset, String randomId, int limit) async {
-    print("fetch gifs service");
     String url = "https://api.giphy.com/v1/gifs/search?q=dog";
-
     Map<String, dynamic> query = {
       'offset': offset,
       //'random_id': randomId,
       'limit': limit,
       'api_key': _apiKey
     };
-
     query.forEach((key, value) {
       url += "&" + key + "=" + value.toString();
     });
-    print("Iniciando Req.");
     final response = await http.get(url);
-    print("Req Finalizada.");
     if (response.statusCode != 200) throw Exception('Failed to load Gifs');
-
     final responseDecoded = json.decode(response.body);
-    print("fim fetch gifs service");
     return List.castFrom<dynamic, Gif>(
         responseDecoded['data'].map((item) => Gif.fromJson(item)).toList());
   }

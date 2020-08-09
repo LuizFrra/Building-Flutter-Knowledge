@@ -35,7 +35,6 @@ class ListGifViewModel {
   }
 
   Future<List<GifViewModel>> fetchGifs(int limit) async {
-    print("fetch gifs  - list");
     List<GifViewModel> gifs = new List<GifViewModel>();
     while (limit != 0) {
       if (this._fetchResult.length == 0 && !this._isFetching) {
@@ -55,7 +54,6 @@ class ListGifViewModel {
         this._realOffSet += 1;
       }
     }
-    print("fim fetch gifs - list");
     return gifs;
   }
 
