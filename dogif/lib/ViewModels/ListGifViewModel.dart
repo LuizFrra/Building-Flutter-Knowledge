@@ -57,9 +57,10 @@ class ListGifViewModel {
     return gifs;
   }
 
-  bool addToFavorite(GifViewModel gif) {
+  Future<bool> addToFavorite(GifViewModel gif) async {
     print("Adicionando Ao favorito.");
-    return true;
+    await _gifService.add(gif.toGif());
+    return Future.value(true);
   }
 
   bool removeFromFavorite(GifViewModel gif) {

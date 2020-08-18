@@ -39,4 +39,17 @@ class Gif {
             heightDownsizedStill != null ? heightDownsizedStill : 250,
         isFavorite: false);
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'sourceMain': sourceMain,
+      'widthMain': widthMain,
+      'heightMain': heightMain,
+      'sourceDownsizedStill': sourceDownsizedStill,
+      'widthDownsizedStill': widthDownsizedStill,
+      'heightDownsizedStill': heightDownsizedStill,
+      'isFavorite': isFavorite == true ? 1 : 0
+    };
+  }
 }

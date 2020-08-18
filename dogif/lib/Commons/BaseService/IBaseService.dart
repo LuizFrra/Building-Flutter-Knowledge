@@ -1,9 +1,9 @@
 abstract class IBaseService<T, S> {
-  T add(T entity);
+  Future<T> add(T entity);
 
-  T remove(S id);
+  Future<T> remove(S id);
 
-  T getById(S id);
+  Future<T> getById(S id);
 
-  T update(T entity);
+  Future<T> update(T entity);
 }

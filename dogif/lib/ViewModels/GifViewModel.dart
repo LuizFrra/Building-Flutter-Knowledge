@@ -40,4 +40,6 @@ class GifViewModel {
   set isFavorite(bool value) {
     this._gif.isFavorite = value;
   }
+
+  Gif toGif() => _gif;
 }

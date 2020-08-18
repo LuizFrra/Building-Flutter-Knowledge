@@ -16,13 +16,25 @@ class MAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 20),
-          child: IconButton(
-            icon: Icon(Icons.favorite, color: Colors.red,),
-            iconSize: 24.0,
-            padding: const EdgeInsets.all(0.0),
-            onPressed: () => {
-              print("Exibir Lista de Gifs Favoritos.")
-            },
+          child: Stack(
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.reorder, color: Colors.white,),
+                iconSize: 32.0,
+              ),
+              Positioned(
+                left: 8,
+                top: 8,
+                child: IconButton(
+                  icon: Icon(Icons.favorite, color: Colors.red,),
+                  iconSize: 20.0,
+                  padding: const EdgeInsets.all(0.0),
+                  onPressed: () => {
+                    print("Exibir Lista de Gifs Favoritosa.")
+                  },
+                ),
+              ),
+            ],
           ),
         )
       ],

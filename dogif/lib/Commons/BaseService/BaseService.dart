@@ -11,23 +11,23 @@ abstract class BaseService<T, S> implements IBaseService<T, S> {
   IBaseRepository repository;
 
   @override
-  T add(T entity) {
-    return repository.add(entity);
+  Future<T> add(T entity) async {
+    return await repository.add(entity);
   }
 
   @override
-  T getById(S id){
-    return repository.getById(id);
+  Future<T> getById(S id) async {
+    return await repository.getById(id);
   }
 
   @override
-  T remove(S id){
-    return repository.remove(id);
+  Future<T> remove(S id) async {
+    return await repository.remove(id);
   }
 
   @override
-  T update(T entity) {
-    return repository.update(entity);
+  Future<T> update(T entity) async {
+    return await repository.update(entity);
   }
 
 }
