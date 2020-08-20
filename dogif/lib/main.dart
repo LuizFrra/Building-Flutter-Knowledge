@@ -1,5 +1,6 @@
 import 'package:dogif/DatabaseSetup/InitializeDB.dart';
 import 'package:dogif/Pages/GifListPage.dart';
+import 'package:dogif/Widgets/FavoriteListIcon.dart';
 import 'package:flutter/material.dart';
 
 import 'Widgets/MAppBar.dart';
@@ -20,27 +21,24 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: MAppBar(
           height: 50,
+          actions: <Widget>[
+            FavoriteListIcon()
+          ],
         ),
         backgroundColor: Color.fromRGBO(39, 39, 39, 1.0),
         body: FutureBuilder(
-          initialData: InitializeDB().doneInitialization,
-          builder: (context, snapshot ) => GifListPage(),
+          future: InitializeDB().doneInitialization,
+          builder: (context, snapshot ) {
+            if(snapshot.connectionState != ConnectionState.done) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return GifListPage();
+            }
+          },
         )
       ),
-    );
-  }
-}
-
-class Teste extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height:  100,
-        color: Colors.green,
-        ),
     );
   }
 }

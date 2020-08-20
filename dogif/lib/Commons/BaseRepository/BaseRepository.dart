@@ -13,6 +13,10 @@ abstract class BaseRepository<T, S> implements IBaseRepository<T, S> {
     print("Obtendo Por ID");
   }
 
+  Future<T> getAll() {
+    print("Obtendo Todos");
+  }
+
   @override
   Future<T> remove(S id){
     print("Removendo Objeto");

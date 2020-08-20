@@ -5,5 +5,7 @@ abstract class IBaseRepository<T, S> {
 
   Future<T> getById(S id);
 
+  Future<T> getAll();
+
   Future<T> update(T entity);
 }

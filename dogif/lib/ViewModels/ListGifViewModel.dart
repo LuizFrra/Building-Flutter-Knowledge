@@ -22,7 +22,7 @@ class ListGifViewModel {
     if (_listGifViewModel == null) {
       print("Griando Instancia ListGifViewModel");
       _listGifViewModel =
-          new ListGifViewModel._internal("", 0, new GifService());
+          new ListGifViewModel._internal("", 30, new GifService());
     }
     return _listGifViewModel;
   }

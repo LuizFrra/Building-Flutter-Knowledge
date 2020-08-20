@@ -36,22 +36,20 @@ class _GifListPageState extends State<GifListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          GifList(
-            gifListcontroller: _left,
-            fetchGifs: widget._listGifViewModel.fetchGifs,
-            onTap: openGif,
-          ),
-          GifList(
-            gifListcontroller: _right,
-            fetchGifs: widget._listGifViewModel.fetchGifs,
-            onTap: openGif,
-          )
-        ],
-      ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        GifList(
+          gifListcontroller: _left,
+          fetchGifs: widget._listGifViewModel.fetchGifs,
+          onTap: openGif,
+        ),
+        GifList(
+          gifListcontroller: _right,
+          fetchGifs: widget._listGifViewModel.fetchGifs,
+          onTap: openGif,
+        )
+      ],
     );
   }
 }

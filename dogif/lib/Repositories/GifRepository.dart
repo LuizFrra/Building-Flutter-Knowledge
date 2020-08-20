@@ -25,22 +25,5 @@ class GifRepository extends BaseRepository<Gif, String> implements IGifRepositor
     });
     return entity;
   }
-//
-//  @override
-//  Gif getById(String id) {
-//    print("oi");
-//    return new Gif();
-//  }
-//
-//  @override
-//  Gif remove(String id) {
-//    print("oi");
-//    return new Gif();
-//  }
-//
-//  @override
-//  Gif update(Gif entity) {
-//    print("oi");
-//    return new Gif();
-//  }
+
 }

@@ -1,43 +1,27 @@
+import 'package:dogif/Pages/GifListPage.dart';
+import 'package:dogif/ViewModels/ListFavoriteGifsViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final double height;
-
-  MAppBar({Key key, @required this.height}) : super(key: key);
+  List<Widget> actions;
+  MAppBar({Key key, @required this.height, this.actions}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("DoGifs", style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+      title: Text(
+        "DoGifs",
+        style: TextStyle(
+            fontFamily: 'Nunito',
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic),
+      ),
       backgroundColor: Color.fromRGBO(36, 36, 36, 1.0),
       centerTitle: true,
-      actions: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: Stack(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.reorder, color: Colors.white,),
-                iconSize: 32.0,
-              ),
-              Positioned(
-                left: 8,
-                top: 8,
-                child: IconButton(
-                  icon: Icon(Icons.favorite, color: Colors.red,),
-                  iconSize: 20.0,
-                  padding: const EdgeInsets.all(0.0),
-                  onPressed: () => {
-                    print("Exibir Lista de Gifs Favoritosa.")
-                  },
-                ),
-              ),
-            ],
-          ),
-        )
-      ],
+      actions: actions
     );
   }
 

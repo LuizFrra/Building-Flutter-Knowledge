@@ -33,6 +33,7 @@ class _FullGifState extends State<FullGif> {
             child: Image.network(
               widget.gif.sourceMain,
               fit: BoxFit.scaleDown,
+              height: widget.gif.heightMain.toDouble(),
               loadingBuilder: (BuildContext context, Widget child,
                   ImageChunkEvent loadingProgress) {
                 if (loadingProgress == null) return child;
@@ -51,6 +52,6 @@ class _FullGifState extends State<FullGif> {
           FavHeartButton(onTap: addToFav, isFav: false,)
         ],
       ),
-    );;
+    );
   }
 }
